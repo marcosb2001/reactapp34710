@@ -1,21 +1,20 @@
-import img from "./images/drawing.png";
+import img from "./images/beetle.jpg";
 import './App.css';
 import NavBar from "./components/NavBar";
 
 
 function App() {
 
-  const styles = {marginTop : "20px", color : "blue"};
-  let usuario = "Marcos";
+  const styles = {marginTop : "20px", color : "darkgray"};
 
   return (
     <div className="App">
       <NavBar/>
       
-      <h1 className='ache1'>Hola {usuario}</h1>
-      <p style={ styles }>ñamiñamiñami</p>
+      <h2 className='ache1'>Manejo y cuidado de los habitantes pequeños del mundo</h2>
+      <p style={ styles }>Buenos Aires, Argentina</p>
       <img src={img}/>
-      <button onClick={ ()=> alert("hola")}>clickme</button>
+      <button onClick={ ()=> alert("hola")}>Contacto</button>
     </div>
   );
 }
