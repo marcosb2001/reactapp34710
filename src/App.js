@@ -14,6 +14,7 @@ function App() {
       <h2 className='ache1'>Manejo y cuidado de los habitantes pequeños del mundo</h2>
       <p style={ styles }>Buenos Aires, Argentina</p>
       <img src={img}/>
+      <br />
       <button onClick={ ()=> alert("hola")}>Contacto</button>
     </div>
   );
