@@ -1,6 +1,14 @@
+import imgCart from "../images/cart.png"
+
 function NavBar() {
 
     const aStyles = {margin : "10px", color : "blue"};
+
+    function CartWidget() {
+        return (
+            <img src={imgCart} alt="" />
+        )
+    }
 
     return (
         <ul>
@@ -10,7 +18,7 @@ function NavBar() {
             <a href="" style={aStyles}>Mariposas</a>
             <a href="" style={aStyles}>Herramientas y artículos</a>
             <a href="" style={aStyles}>Blog</a>
-
+            <CartWidget/>
         </ul>
     )
 }
