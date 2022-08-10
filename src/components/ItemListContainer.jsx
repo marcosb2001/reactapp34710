@@ -1,12 +1,15 @@
+import React, { useEffect, useState } from "react";
+import ItemList from "./ItemList.js";
 
-function ItemListContainer(props) {
 
-    console.log(props)
+export default function ItemListContainer(props) {
+        
     return (
-        <h2>{props.data.greeting}</h2>
+        <div> 
+            <h1>{props.greetingdata.greeting}</h1>
+            <ItemList></ItemList>
+        </div>
     )
 
 
 }
-
-export default ItemListContainer;

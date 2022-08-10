@@ -1,10 +1,10 @@
 import React, { useState } from 'react';
 
-function ItemCount(props){
-    const [items, setItems] = useState(props.initial);
+function ItemCount({initial, stock}){
+    const [items, setItems] = useState(initial);
 
     const handleIncrement = () => {
-        if(items < (props.stock)){
+        if(items < stock){
             setItems(items+1);
         } else {
             setItems(items+0)
@@ -12,7 +12,7 @@ function ItemCount(props){
     }
 
     const handleDecrement = () => {
-        if(items > (props.initial)){
+        if(items > initial){
             setItems(items-1);
         } else {
             setItems(items-0)
