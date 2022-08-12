@@ -3,6 +3,7 @@ import './App.css';
 import NavBar from "./components/NavBar";
 import ItemListContainer from "./components/ItemListContainer";
 import ItemCount from "./components/ItemCount"
+import ItemDetailContainer from "./components/itemDetail/ItemDetailContainer";
 
 function App() {
 
@@ -24,7 +25,8 @@ function App() {
       <button onClick={ ()=> alert("hola")}>Contacto</button>
       <ItemCount initial={1} stock={20}/>
       
-      <ItemListContainer greetingdata={ItemList}/>
+      {/*}<ItemListContainer greetingdata={ItemList}/>*/}
+      <ItemDetailContainer/>
 
     </div>
   );
