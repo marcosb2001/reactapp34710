@@ -1,17 +1,26 @@
 import React, { useEffect, useState } from "react";
 import itemsData from "../../data/data.js";
 import ItemDetail from "./ItemDetail.jsx";
-
-function getItem(){
-    return new Promise( (resolve) => {
-    setTimeout( () => resolve(itemsData[0]), 2000 )
-    });
-}
-
-function ItemDetailList() {
+import {useParams} from "react-router-dom";
 
 
+
+export default function ItemDetailContainer(props) {
     let [data, setData] = useState([]); 
+
+    const idURL = useParams().id;
+
+    function getItem(){
+        return new Promise( (resolve, reject) => {
+            let itemRequested = itemsData.find( elemento => elemento.id == idURL );
+            
+            if (itemRequested === undefined)
+                reject("item no encontrado")
+            else
+                resolve(itemRequested);
+        });
+    }
+
 
     useEffect(() => {
         getItem().then((respuesta) => {
@@ -26,16 +35,5 @@ return(
     </div>
 )
     
-
-}
-
-export default function ItemDetailContainer(props) {
-        
-    return (
-        <div>
-            <ItemDetailList/>
-        </div>
-    )
-
 
 }

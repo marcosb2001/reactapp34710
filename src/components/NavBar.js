@@ -1,4 +1,5 @@
-import imgCart from "../images/cart.png"
+import imgCart from "../images/cart.png";
+import { Link, NavLink } from "react-router-dom";
 
 function NavBar() {
 
@@ -11,15 +12,16 @@ function NavBar() {
     }
 
     return (
-        <ul>
+        <div>
             <h1>Adopción de insectos</h1>
-            <a href="" style={aStyles}>Hormigas</a>
-            <a href="" style={aStyles}>Escarabajos</a>
-            <a href="" style={aStyles}>Mariposas</a>
-            <a href="" style={aStyles}>Herramientas y artículos</a>
-            <a href="" style={aStyles}>Blog</a>
+        <ul>
+            <Link to="/" style={aStyles}>Home</Link>
+            <Link to="/category/ant" style={aStyles}>Hormigas</Link>
+            <Link to="/category/beetle" style={aStyles}>Escarabajos</Link>
+            <Link to="/category/butterfly" style={aStyles}>Mariposas</Link>
             <CartWidget/>
         </ul>
+        </div>
     )
 }
 

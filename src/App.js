@@ -2,32 +2,36 @@ import img from "./images/beetle.jpg";
 import './App.css';
 import NavBar from "./components/NavBar";
 import ItemListContainer from "./components/ItemListContainer";
-import ItemCount from "./components/ItemCount"
 import ItemDetailContainer from "./components/itemDetail/ItemDetailContainer";
+import { BrowserRouter, Routes, Route, Link } from "react-router-dom";
 
 function App() {
 
   const styles = {marginTop : "20px", color : "darkgray"};
   let location = "Buenos Aires, Argentina"
 
-  const ItemList = {
-    greeting: "Productos:"
-  }
-
   return (
     <div className="App">
-      <NavBar/>
-      
-      <h2 className='ache1'>Manejo y cuidado de los habitantes pequeños del mundo</h2>
-      <p style={ styles}>{location}</p>
-      <img src={img} alt = "imagen"/>
-      <br />
-      <button onClick={ ()=> alert("hola")}>Contacto</button>
-      <ItemCount initial={1} stock={20}/>
-      
-      {/*}<ItemListContainer greetingdata={ItemList}/>*/}
-      <ItemDetailContainer/>
 
+
+      <BrowserRouter>
+
+            <h2 className='h1'>Manejo y cuidado de los habitantes pequeños del mundo</h2>
+            <NavBar/>
+            <p style={ styles}>{location}</p>
+            <img src={img} alt = "imagen"/>
+            <br />
+ 
+          <Routes>
+
+            <Route path="/" element={<ItemListContainer/> }/>
+            <Route path="/category/:idcat" element={<ItemListContainer/>}/>
+            <Route path="/detalle/:id" element={<ItemDetailContainer/>}/>
+            <Route path="*" element={<h1>404: Elemento no encontrado</h1>}/>
+
+          </Routes>
+
+      </BrowserRouter>
     </div>
   );
 }

@@ -10,7 +10,7 @@ function getProducts(){
 
 export default function ItemList() {
 
-    
+    const listStyles = {display: 'flex', justifyContent: "space-between"}
 
     let [data, setData] = useState([]); 
 
@@ -25,8 +25,9 @@ return(
         { 
         data.map( (singleProduct) => {
         return (
-            <ItemCard
+            <ItemCard style={listStyles}
             key={singleProduct.id}
+            id={singleProduct.id}
             name={singleProduct.name}
             price={singleProduct.price}
             img={singleProduct.img}

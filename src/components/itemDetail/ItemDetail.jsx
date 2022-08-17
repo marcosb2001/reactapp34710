@@ -1,4 +1,4 @@
-
+import { useParams } from "react-router-dom";
 
 function ItemDetail({id, img, name, price, desc, shipping}) {
 
