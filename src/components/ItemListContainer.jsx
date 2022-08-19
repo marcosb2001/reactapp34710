@@ -42,6 +42,7 @@ return(
             name={singleProduct.name}
             price={singleProduct.price}
             img={singleProduct.img}
+            stock={singleProduct.stock}
             />
             )}
         
