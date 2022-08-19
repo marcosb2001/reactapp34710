@@ -29,10 +29,7 @@ function ItemDetail({id, img, name, price, desc, shipping, stock}) {
             </div>
 
             { estado === 0 ?
-            <ItemCount 
-            initial={1} 
-            stock={stock} 
-            onAdd={handleAdd}
+            <ItemCount initial={1} stock={stock} onAdd={handleAdd}
             text="finalizar"/>
             : <a href="/cart"> ir a carrito</a>
             }
