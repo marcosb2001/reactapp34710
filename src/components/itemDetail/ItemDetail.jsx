@@ -1,16 +1,18 @@
 import { useParams } from "react-router-dom";
-import { useState } from "react";
+import { useState, useContext } from "react";
 import ItemCount from "../ItemCount"
+import { CartContext } from "../cartContext";
+
 
 function ItemDetail({id, img, name, price, desc, shipping, stock}) {
 
     const styles = {marginTop : "20px", backgroundColor : "darkgray"};
-
-
+    const { addToCart } = useContext(CartContext)
     const [estado, setEstado] = useState(0);
 
     function handleAdd(items) {
-        console.log('agreagar carrito', items);
+        const itemToCart = { id, name, price, img, desc, shipping, stock};
+        addToCart(itemToCart, items);
         setEstado(items)
 
     }
