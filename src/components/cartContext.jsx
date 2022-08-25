@@ -8,16 +8,19 @@ export function CartProvider({children}) {
 
     function addToCart(item, quantity) {
 
-
-        if(cart.some(itemInCart => itemInCart.id === item.id)){
+        if (isInCart(item.id)){
 
         }else {
             let copyCart = [...cart];
             copyCart.push({...item, quantity: quantity})
     
-            setCart(copyCart)   
+            setCart(copyCart)
+            console.log(copyCart)
         }
-        
+
+        function isInCart(id){
+            return (cart.some(itemInCart => itemInCart.id == item.id))
+        }
     }
 
     return (

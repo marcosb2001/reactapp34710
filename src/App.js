@@ -5,7 +5,6 @@ import Footer from "./components/footer";
 import ItemListContainer from "./components/ItemListContainer";
 import ItemDetailContainer from "./components/itemDetail/ItemDetailContainer";
 import { BrowserRouter, Routes, Route, } from "react-router-dom";
-import { createContext } from 'react';
 import { CartProvider } from "./components/cartContext";
 
 

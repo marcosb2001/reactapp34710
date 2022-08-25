@@ -8,13 +8,12 @@ function ItemDetail({id, img, name, price, desc, shipping, stock}) {
 
     const styles = {marginTop : "20px", backgroundColor : "darkgray"};
     const { addToCart } = useContext(CartContext)
-    const [estado, setEstado] = useState(0);
+    const [quantityInCart, setQuantityInCart] = useState(0);
 
     function handleAdd(items) {
         const itemToCart = { id, name, price, img, desc, shipping, stock};
         addToCart(itemToCart, items);
-        setEstado(items)
-
+        setQuantityInCart(items)
     }
 
     return (
@@ -30,7 +29,7 @@ function ItemDetail({id, img, name, price, desc, shipping, stock}) {
                 <p>Envío: {shipping}</p>
             </div>
 
-            { estado === 0 ?
+            { quantityInCart === 0 ?
             <ItemCount initial={1} stock={stock} onAdd={handleAdd}
             text="finalizar"/>
             : <a href="/cart"> ir a carrito</a>
