@@ -1,6 +1,7 @@
 import img from "./images/beetle.jpg";
 import './App.css';
 import NavBar from "./components/NavBar";
+import CartView from "./components/CartView";
 import Footer from "./components/footer";
 import ItemListContainer from "./components/ItemListContainer";
 import ItemDetailContainer from "./components/itemDetail/ItemDetailContainer";
@@ -30,7 +31,7 @@ function App() {
             <Route path="/" element={<ItemListContainer/> }/>
             <Route path="/category/:idcat" element={<ItemListContainer/>}/>
             <Route path="/detalle/:id" element={<ItemDetailContainer/>}/>
-            <Route path="/cart" element={<h1>Carrito</h1>}/>
+            <Route path="/cart" element={<CartView/>}/>
             <Route path="*" element={<h1>404: Elemento no encontrado</h1>}/>
           </Routes>
 

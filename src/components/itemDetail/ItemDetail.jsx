@@ -1,7 +1,8 @@
 import { useParams } from "react-router-dom";
 import { useState, useContext } from "react";
-import ItemCount from "../ItemCount"
+import ItemCount from "../ItemCount";
 import { CartContext } from "../cartContext";
+import { Link } from 'react-router-dom';
 
 
 function ItemDetail({id, img, name, price, desc, shipping, stock}) {
@@ -24,7 +25,7 @@ function ItemDetail({id, img, name, price, desc, shipping, stock}) {
             <div className="card-detail">
                 <h1>{name}</h1>
                 <h3>{price}</h3>
-                <h5>descripción:</h5>
+                <h5>desscripción:</h5>
                 <p>{desc}</p>
                 <p>Envío: {shipping}</p>
             </div>
@@ -32,7 +33,7 @@ function ItemDetail({id, img, name, price, desc, shipping, stock}) {
             { quantityInCart === 0 ?
             <ItemCount initial={1} stock={stock} onAdd={handleAdd}
             text="finalizar"/>
-            : <a href="/cart"> ir a carrito</a>
+            : <Link to="/cart"> ir a carrito</Link>
             }
         </div>
     )

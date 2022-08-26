@@ -19,7 +19,7 @@ export function CartProvider({children}) {
         }
 
         function isInCart(id){
-            return (cart.some(itemInCart => itemInCart.id == item.id))
+            return (cart.some(itemInCart => itemInCart.id === id))
         }
     }
 

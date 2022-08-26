@@ -31,7 +31,7 @@ export default function ItemDetailContainer(props) {
 return(
     <div>
         <h2>Detalles:</h2>
-        <ItemDetail key={data.id} name={data.name} img={data.img} price={data.price} desc={data.desc} shipping={data.shipping} stock={data.stock}/>
+        <ItemDetail id={data.id} key={data.id} name={data.name} img={data.img} price={data.price} desc={data.desc} shipping={data.shipping} stock={data.stock}/>
     </div>
 )
     
