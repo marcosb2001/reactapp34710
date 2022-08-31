@@ -7,9 +7,11 @@ import ItemListContainer from "./components/ItemListContainer";
 import ItemDetailContainer from "./components/itemDetail/ItemDetailContainer";
 import { BrowserRouter, Routes, Route, } from "react-router-dom";
 import { CartProvider } from "./components/cartContext";
+import firestoreDB from "./services/firebase";
 
 
 function App() {
+
 
   const styles = {marginTop : "20px", color : "darkgray"};
   let location = "Buenos Aires, Argentina"

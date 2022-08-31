@@ -1,22 +1,51 @@
 import React, { useEffect, useState } from "react";
-import itemsData from "../data/data.js";
 import ItemCard from "./itemCard/Item";
 import {useParams} from "react-router-dom"
+import firestoreDB from "../services/firebase";
+import { getDocs, collection, snapshotEqual, query, where } from "firebase/firestore";
 
 
 export default function ItemListContainer(props) {
 
-    function getProducts(){
+    
+
+    const idCatURL = useParams().idcat;
+
+    const getProducts = () => {
         return new Promise( (resolve) => {
-        setTimeout( () => resolve(itemsData), 1000 )
+            const ProductsCollection = collection(firestoreDB, "products");
+
+            getDocs(ProductsCollection).then( snapshot => {
+                const docsData = snapshot.docs.map( doc =>{ 
+                    return{ ...doc.data(), id: doc.id}
+                });
+                resolve(docsData)
+            })
+
         });
     }
+
+    const getProductsByCat = (idCatURL) => {
+        return new Promise( (resolve) => {
+            const ProductsCollection = collection(firestoreDB, "products");
+    
+            const q = query(ProductsCollection, where("category", "==", idCatURL))
+
+            getDocs(q).then( snapshot => {
+                const docsData = snapshot.docs.map( doc =>{ 
+                    return{ ...doc.data(), id: doc.id}
+                });
+                resolve(docsData)
+            })
+
+        });
+    }
+
+    
 
     const listStyles = {display: 'flex', justifyContent: "space-between"}
 
     let [data, setData] = useState([]);
-
-    const idCatURL = useParams().idcat;
 
     useEffect(() => {
         getProducts().then((respuesta) => {
@@ -24,8 +53,9 @@ export default function ItemListContainer(props) {
                 setData(respuesta)
             }
             else{
-                let filtro = respuesta.filter( elemento => elemento.category === idCatURL)
-                setData(filtro)
+            getProductsByCat(idCatURL).then((respuesta) => {
+                setData(respuesta)
+            })
         }
         });
     },  []);

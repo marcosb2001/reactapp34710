@@ -3,27 +3,32 @@ import itemsData from "../../data/data.js";
 import ItemDetail from "./ItemDetail.jsx";
 import {useParams} from "react-router-dom";
 
+import firestoreDB from "../../services/firebase.js";
+import { collection, doc, getDoc } from "firebase/firestore";
 
 
 export default function ItemDetailContainer(props) {
-    let [data, setData] = useState([]); 
 
-    const idURL = useParams().id;
-
-    function getItem(){
+    function getItemById(id) {
         return new Promise( (resolve, reject) => {
-            let itemRequested = itemsData.find( elemento => elemento.id == idURL );
+            const ProductsCollection =  collection(firestoreDB, "products");
+            const docRef = doc(ProductsCollection, id);
             
-            if (itemRequested === undefined)
-                reject("item no encontrado")
-            else
-                resolve(itemRequested);
-        });
+            getDoc(docRef).then( snapshot => {
+                resolve(
+                    { ...snapshot.data(), id: snapshot.id}
+                )
+            });
+        })
     }
+    
+    let [data, setData] = useState({}); 
+
+    const {id} = useParams();
 
 
     useEffect(() => {
-        getItem().then((respuesta) => {
+        getItemById(id).then((respuesta) => {
             setData(respuesta)
         });
     },  []);

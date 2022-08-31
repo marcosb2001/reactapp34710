@@ -1,15 +1,11 @@
-import imgCart from "../images/cart.png";
-import { Link, NavLink } from "react-router-dom";
+import { Link } from "react-router-dom";
+import CartWidget from "./cartWidget";
 
 function NavBar() {
 
     const aStyles = {margin : "10px", color : "blue"};
 
-    function CartWidget() {
-        return (
-            <img src={imgCart} alt="" />
-        )
-    }
+
 
     return (
         <div>
