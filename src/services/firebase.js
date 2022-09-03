@@ -1,6 +1,7 @@
 // Import the functions you need from the SDKs you need
 import { initializeApp } from "firebase/app";
-import { getFirestore } from "firebase/firestore"
+import { getFirestore, collection, addDoc } from "firebase/firestore"
+import itemsData from "../data/data";
 
 // Your web app's Firebase configuration
 const firebaseConfig = {
@@ -15,5 +16,14 @@ const firebaseConfig = {
 // Initialize Firebase
 const app = initializeApp(firebaseConfig);
 const firestoreDB = getFirestore(app);
+
+export async function saveProductsToFirebase() {
+  const collectionProducts = collection(firestoreDB, "products")
+
+  for(let item of itemsData){
+    const docref = await addDoc(collectionProducts, item)
+    console.log(docref.id)
+  }
+}
 
 export default firestoreDB;

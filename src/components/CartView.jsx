@@ -2,6 +2,7 @@ import { useContext, useState } from "react"
 import { CartContext } from "./cartContext"
 import CartItem from "./CartItem"
 import { Link } from "react-router-dom"
+import UserForm from "./userForm/UserForm"
 
 export default function CartView() {
 
@@ -35,6 +36,8 @@ export default function CartView() {
         { cart.length > 0 ? (
         cart.map(cartProduct => {
             return(
+
+            <div>
             <CartItem
             key={cartProduct.key}
             id={cartProduct.id}
@@ -43,13 +46,18 @@ export default function CartView() {
             quantity={cartProduct.quantity}
             total={cartProduct.quantity*cartProduct.price}
             />
+
+            <h3>Precio total: ${totalPrice}</h3>
+
+            <UserForm cart={cart}/>
+            </div>
             )
             })
+            
             ) : (
                 <p>El carrito está vacío.</p>
             )}
 
-        <h3>Precio total: ${totalPrice}</h3>
     </div>
     )
 }

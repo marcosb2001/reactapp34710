@@ -26,7 +26,6 @@ function ItemCount({initial, stock, onAdd, text}){
 
 return (
     <div>
-        <h3>contador de items - stock: 24</h3>
         <button onClick={ handleDecrement }>-</button>
         <span>{items}</span>
         <button onClick={ handleIncrement }>+</button>
