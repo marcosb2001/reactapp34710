@@ -4,7 +4,7 @@ import ItemCount from "../ItemCount";
 
 function ItemCard({id, img, name, price, stock}) {
 
-    const cardStyles = { height : "230px", width: "20%", border : "1px solid grey", padding : "10px", flex: 'auto'};
+    const cardStyles = { height : "230px", width: "200px", border : "1px solid grey", borderRadius : "10px", padding : "10px", margin : "10px 10px"};
 
     return (
         <div className="card" style={cardStyles}>

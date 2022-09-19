@@ -8,6 +8,8 @@ export default function CartView() {
 
     const {cart, clearCart} = useContext(CartContext)
 
+    const cartContainerStyle = {display : "flex"}
+
     let totalQuantity = 0
     cart.map(item => {
         totalQuantity += item.quantity 
@@ -32,12 +34,11 @@ export default function CartView() {
         <Link to="/">
             <button>home</button>
         </Link>
-        
+
+        <div style={cartContainerStyle}>
         { cart.length > 0 ? (
         cart.map(cartProduct => {
             return(
-
-            <div>
             <CartItem
             key={cartProduct.key}
             id={cartProduct.id}
@@ -46,17 +47,21 @@ export default function CartView() {
             quantity={cartProduct.quantity}
             total={cartProduct.quantity*cartProduct.price}
             />
-
-            <h3>Precio total: ${totalPrice}</h3>
-
-            <UserForm cart={cart}/>
-            </div>
             )
             })
             
             ) : (
                 <p>El carrito está vacío.</p>
             )}
+        </div>            
+
+        { totalQuantity > 0 ?
+            <div>
+            <h3>Precio total: ${totalPrice}</h3>
+            <UserForm cart={cart}/>
+            </div>
+            : <p></p>
+            }
 
     </div>
     )

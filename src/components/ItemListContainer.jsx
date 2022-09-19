@@ -11,6 +11,8 @@ export default function ItemListContainer(props) {
 
     const idCatURL = useParams().idcat;
 
+    const itemListContainerStyle = {display : "flex", flexWrap : "wrap", justifyContent : "center"}
+
     const getProducts = () => {
         return new Promise( (resolve) => {
             const ProductsCollection = collection(firestoreDB, "products");
@@ -43,7 +45,7 @@ export default function ItemListContainer(props) {
 
     
 
-    const listStyles = {display: 'flex', justifyContent: "space-between"}
+    
 
     let [data, setData] = useState([]);
 
@@ -63,10 +65,11 @@ export default function ItemListContainer(props) {
 return(
     <div>
         <h1>Productos:</h1>
+        <div style={itemListContainerStyle}>
         { 
         data.map( (singleProduct) => {
         return (
-            <ItemCard style={listStyles}
+            <ItemCard
             key={singleProduct.id}
             id={singleProduct.id}
             name={singleProduct.name}
@@ -78,6 +81,7 @@ return(
         
      )
     }
+    </div>
     </div>
 )
     
